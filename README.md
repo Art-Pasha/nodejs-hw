@@ -1,6 +1,6 @@
-# nodejs-hw — 01-express
+# nodejs-hw — 02-mongodb
 
-Express-додаток для роботи з колекцією нотаток.
+Express-додаток для роботи з колекцією нотаток із підключенням MongoDB через Mongoose.
 
 ## Встановлення
 
@@ -14,6 +14,7 @@ npm install
 
 \`\`\`
 PORT=3000
+MONGO_URL=mongodb+srv://<username>:<password>@<cluster-url>/<database-name>?retryWrites=true&w=majority
 \`\`\`
 
 ## Запуск
@@ -26,8 +27,10 @@ npm start      # звичайний запуск
 ## Маршрути
 
 - `GET /notes` — повертає всі нотатки
-- `GET /notes/:noteId` — повертає нотатку за ID
-- `GET /test-error` — тестовий маршрут для перевірки обробки помилок (500)
+- `GET /notes/:noteId` — повертає нотатку за ID (404, якщо не знайдено)
+- `POST /notes` — створює нову нотатку (201)
+- `PATCH /notes/:noteId` — оновлює нотатку за ID (404, якщо не знайдено)
+- `DELETE /notes/:noteId` — видаляє нотатку за ID (404, якщо не знайдено)
 - будь-який інший маршрут — 404 `Route not found`
 
 ## Деплой
