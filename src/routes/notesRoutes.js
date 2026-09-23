@@ -16,12 +16,10 @@ import {
 
 const router = Router();
 
-router.use(authenticate);
-
-router.get('/notes', getAllNotesSchema, getAllNotes);
-router.get('/notes/:noteId', noteIdSchema, getNoteById);
-router.post('/notes', createNoteSchema, createNote);
-router.patch('/notes/:noteId', updateNoteSchema, updateNote);
-router.delete('/notes/:noteId', noteIdSchema, deleteNote);
+router.get('/notes', authenticate, getAllNotesSchema, getAllNotes);
+router.get('/notes/:noteId', authenticate, noteIdSchema, getNoteById);
+router.post('/notes', authenticate, createNoteSchema, createNote);
+router.patch('/notes/:noteId', authenticate, updateNoteSchema, updateNote);
+router.delete('/notes/:noteId', authenticate, noteIdSchema, deleteNote);
 
 export default router;
